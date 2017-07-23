@@ -1,0 +1,8 @@
+﻿@model List<SimplePageCreation.Models.PageListViewModel>
+
+@foreach (var page in Model)
+{
+    <a href="home/page/@page.Id">
+        @page.Title
+    </a>
+}
