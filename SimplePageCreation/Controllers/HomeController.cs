@@ -37,6 +37,20 @@ namespace SimplePageCreation.Controllers
 
         public ActionResult Page(Guid pageId)
         {
+            var page = dataManger.GetPage(pageId);
+            PageViewModel pageView = new PageViewModel();
+
+            pageView.Id = page.Id;
+            pageView.Title = page.Title;
+            pageView.Content = page.Content;
+            pageView.Description = page.Description;
+
+            return View();
+        }
+
+        public ActionResult EditPage()
+        {
+            //save data in view bag
             return View();
         }
     }
