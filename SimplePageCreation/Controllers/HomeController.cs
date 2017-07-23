@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using BLL.Models;
+using DAL;
 using SimplePageCreation.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,8 @@ namespace SimplePageCreation.Controllers
 
         public ActionResult Index()
         {
-            var pages = dataManger.GetPages();
+            var pages = new List<Page>()
+                { new Page("p1","dec","","Windows.2000"),new Page("p2","dec","","Windows.2000"),new Page("p3","dec","","Windows.2000")};//dataManger.GetPages();
 
             List<PageListViewModel> pagesViewModelList = new List<PageListViewModel>();
 
@@ -27,7 +29,7 @@ namespace SimplePageCreation.Controllers
 
                 pagesViewModelList.Add(pageView);
             }
-            return View();
+            return View(pagesViewModelList);
         }
 
         public ActionResult AddPage()
@@ -35,23 +37,21 @@ namespace SimplePageCreation.Controllers
             return View();
         }
 
-        public ActionResult Page(Guid pageId)
+        [HttpPost]
+        public ActionResult AddPage(AddPageViewModel model)
         {
-            var page = dataManger.GetPage(pageId);
-            PageViewModel pageView = new PageViewModel();
+            if (ModelState.IsValid)
+            {
+                var page = new Page(model.Title, model.Description, model.Content, model.Password);
 
-            pageView.Id = page.Id;
-            pageView.Title = page.Title;
-            pageView.Content = page.Content;
-            pageView.Description = page.Description;
+                dataManger.AddPage(page);
+                dataManger.SaveChanges();
 
-            return View();
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(model);
         }
 
-        public ActionResult EditPage()
-        {
-            //save data in view bag
-            return View();
-        }
     }
 }

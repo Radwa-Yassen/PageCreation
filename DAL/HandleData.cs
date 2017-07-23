@@ -42,7 +42,7 @@ namespace DAL
             _dbContext.Entry(page).State = EntityState.Modified;
         }
 
-        public void SaveChanged()
+        public void SaveChanges()
         {
             _dbContext.SaveChanges();
         }

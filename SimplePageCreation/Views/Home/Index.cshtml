@@ -2,7 +2,13 @@
 
 @foreach (var page in Model)
 {
-    <a href="home/page/@page.Id">
+    <a href='@Url.Action("Page", "Page",new { pageId = page.Id })'>
         @page.Title
     </a>
+    <br />
 }
+
+
+<a class="btn btn-default" href='@Url.Action("AddPage", "Home")'>
+    Add page
+</a>
