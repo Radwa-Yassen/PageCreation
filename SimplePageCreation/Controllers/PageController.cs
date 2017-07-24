@@ -21,7 +21,7 @@ namespace SimplePageCreation.Controllers
 
         public ActionResult Page(Guid pageId)
         {
-            var page = new Page("p1", "dec", "", "Windows.2000");//dataManger.GetPage(pageId);
+            var page = dataManger.GetPage(pageId);
             PageViewModel pageView = new PageViewModel();
 
             pageView.Id = page.Id;
@@ -50,8 +50,7 @@ namespace SimplePageCreation.Controllers
                 dataManger.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
-
-            // If we got this far, something failed, redisplay form
+            
             return View(model);
         }
     }

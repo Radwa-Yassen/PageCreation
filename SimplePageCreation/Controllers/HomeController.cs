@@ -15,8 +15,7 @@ namespace SimplePageCreation.Controllers
 
         public ActionResult Index()
         {
-            var pages = new List<Page>()
-                { new Page("p1","dec","","Windows.2000"),new Page("p2","dec","","Windows.2000"),new Page("p3","dec","","Windows.2000")};//dataManger.GetPages();
+            var pages = dataManger.GetPages();
 
             List<PageListViewModel> pagesViewModelList = new List<PageListViewModel>();
 
