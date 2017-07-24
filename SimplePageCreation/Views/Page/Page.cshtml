@@ -1,0 +1,74 @@
+﻿@model SimplePageCreation.Models.PageViewModel
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+<h2>@Model.Title</h2>
+<i>@Model.Description</i>
+<div>@Model.Content</div>
+
+<input class="form-control"
+       id="cPassword"
+       type="text" />
+
+
+<button class="btn btn-default" id="editBtn">
+    edit
+</button>
+<div id="editDiv" style="display:none;">
+    @using (Html.BeginForm("EditPage", "Page", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Content, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="EditPage" />
+            </div>
+        </div>
+    }
+
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#editBtn").click(function () {
+            debugger;
+            if ("@Model.Password" == $("#cPassword").val()) {
+                document.getElementById('editDiv').style.display = 'block';
+                document.getElementById('editBtn').style.display = 'none';
+                document.getElementById('cPassword').style.display = 'none';
+            }
+        });
+
+    });
+    
+</script>

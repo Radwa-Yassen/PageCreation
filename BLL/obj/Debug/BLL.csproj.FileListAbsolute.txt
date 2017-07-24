@@ -1,0 +1,5 @@
+E:\codes\SimplePageCreation\SimplePageCreation\BLL\bin\Debug\BLL.dll
+E:\codes\SimplePageCreation\SimplePageCreation\BLL\bin\Debug\BLL.pdb
+E:\codes\SimplePageCreation\SimplePageCreation\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\codes\SimplePageCreation\SimplePageCreation\BLL\obj\Debug\BLL.dll
+E:\codes\SimplePageCreation\SimplePageCreation\BLL\obj\Debug\BLL.pdb
