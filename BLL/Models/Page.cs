@@ -29,5 +29,10 @@ namespace BLL.Models
             Content = content;
             Password = password; 
         }
+
+        public Page()
+        {
+
+        }
     }
 }
